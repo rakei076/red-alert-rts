@@ -32,6 +32,8 @@ The repository does not include proprietary Red Alert art, names, audio, or miss
 10. Open `Assets/Scenes/Main.unity`.
 11. Press the Play button at the top of the Unity editor.
 
+Important: the Scene view can look empty before you press Play. That is expected in this prototype because `GameBootstrapper` generates the menu, map, units, buildings, ore, and UI at runtime.
+
 ### Option B: Git Clone
 
 ```bash
@@ -59,6 +61,8 @@ After pressing Play:
 
 - **Unity says the project was created with another version:** open it with Unity 2022.3 LTS or newer.
 - **Scene is empty:** open `Assets/Scenes/Main.unity`, then press Play again.
+- **Hierarchy only shows `GameBootstrapper`:** that is normal before Play. Press Play and look at the Game tab.
+- **Game tab is still blank after pressing Play:** open **Window > General > Console** and copy the first red error.
 - **Script compile error appears:** copy the first error from Unity Console and open an issue on GitHub.
 - **Unity spends a long time importing:** wait. The first import creates a local `Library` folder that is not included in Git.
 - **Download ZIP looks too small:** that is normal. Unity itself is large; this project is currently lightweight.
