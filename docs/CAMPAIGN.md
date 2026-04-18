@@ -2,19 +2,16 @@
 
 ## Mission 01: First Refinery
 
-Teach the player the core loop: protect the starting refinery, harvest ore, train a small force, and destroy the enemy command center.
+Teach the core loop: protect the starting refinery, harvest ore, train a force, and destroy the enemy command center.
 
-## Mission 02: Armor Column
+## Next Missions
 
-Pushes the player toward factories and tank production. The enemy production buildings are the objective, so the player learns to target infrastructure.
-
-## Mission 03: Red Dawn
-
-Defensive opening into a larger base assault. The player starts with a factory and must survive multiple armor waves before ending the mission.
+- Armor Column: emphasize factory and tank production.
+- Red Dawn: defensive opening into a larger base assault.
 
 ## Design Pillars
 
 - Readable top-down battlefield
 - Fast feedback for selection and orders
-- Small enough missions to iterate quickly
+- Small missions that can be iterated quickly
 - No proprietary assets or trademarked content

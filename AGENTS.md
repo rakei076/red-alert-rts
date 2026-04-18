@@ -1,9 +1,9 @@
 # Project Instructions
 
-This project is a Red Alert-inspired RTS prototype.
+This is a Unity RTS project inspired by classic base-building RTS games.
 
-- Keep the game browser-playable first.
+- Keep the project openable in Unity first.
 - Do not add proprietary Command & Conquer or Red Alert assets.
-- Prefer permissive or CC0 art/audio assets.
-- Keep core gameplay code readable enough for fast iteration.
-- Add tests or smoke checks for systems when behavior grows beyond the current prototype.
+- Prefer CC0 or permissive open-source art/audio assets.
+- Keep gameplay systems readable enough for fast iteration.
+- Add editor/play-mode tests when systems become larger than this prototype.

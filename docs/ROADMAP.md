@@ -1,21 +1,20 @@
 # Roadmap
 
-## Milestone 0.1: Playable Vertical Slice
+## Milestone 0.1: Unity Vertical Slice
 
-- Campaign menu
-- Three single-player missions
-- Unit selection and commands
-- Ore economy
-- Basic construction
-- Enemy waves and victory conditions
-- Mini-map
+- Unity project scaffold
+- Single playable mission
+- Runtime-generated placeholder visuals
+- Selection, movement, attack, harvesting, production, and construction
+- Enemy base and timed waves
+- Mini-map and mission result overlay
 
 ## Milestone 0.2: Better RTS Feel
 
-- Grid-aware placement preview
+- Grid-aware placement
 - Unit collision and formation spacing
 - Attack-move command
-- Guard stance and hold-position stance
+- Guard and hold-position stance
 - Production queues with build times
 - Fog of war and shroud
 - Improved enemy base rebuilding logic
@@ -23,21 +22,21 @@
 ## Milestone 0.3: Campaign Layer
 
 - Mission unlock persistence
-- Briefing/debriefing screens
+- Briefing and debriefing screens
 - Scripted objectives
 - Save/load mission state
 - Difficulty settings
 
 ## Milestone 0.4: Packaging
 
-- Web release on GitHub Pages
-- Electron or Tauri desktop wrapper
-- Windows build workflow
-- Mac smoke-test workflow
+- Mac development build
+- Windows desktop build
+- GitHub release workflow
+- Optional Steam-style folder build
 
 ## Milestone 0.5: Open-Source Art Pass
 
-- Replace placeholder SVGs with a consistent permissive asset pack
+- Replace procedural placeholders with a consistent permissive asset pack
 - Add animation frames
 - Add impact, explosion, and movement effects
 - Add open-source music and sound effects
