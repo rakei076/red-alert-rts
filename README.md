@@ -116,6 +116,8 @@ See `docs/ROADMAP.md`.
 
 Cloud testing is prepared through GitHub Actions and GameCI. The repository smoke check can run without Unity credentials. The real Unity WebGL build requires Unity Actions secrets.
 
+If your Unity account uses Google login, use Unity Build Automation first instead of putting a Google password into GitHub Actions.
+
 See `docs/ci/UNITY_CLOUD_TESTING.md`.
 
 ## License
