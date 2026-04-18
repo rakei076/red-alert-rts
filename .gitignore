@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.vite/
+.playwright-cli/
+coverage/
+playwright-report/
+test-results/
+output/
