@@ -1,0 +1,95 @@
+name: Unity Cloud Smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "Assets/**"
+      - "Packages/**"
+      - "ProjectSettings/**"
+      - ".github/workflows/unity-cloud-smoke.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "Assets/**"
+      - "Packages/**"
+      - "ProjectSettings/**"
+      - ".github/workflows/unity-cloud-smoke.yml"
+
+jobs:
+  repository-smoke:
+    name: Repository smoke check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify Unity project files
+        shell: bash
+        run: |
+          test -f ProjectSettings/ProjectVersion.txt
+          test -f ProjectSettings/EditorBuildSettings.asset
+          test -f Packages/manifest.json
+          test -f Assets/Scenes/Main.unity
+          test -f Assets/Scripts/GameBootstrapper.cs
+          grep -q "GameBootstrapper" Assets/Scenes/Main.unity
+          grep -q "class GameBootstrapper" Assets/Scripts/GameBootstrapper.cs
+
+      - name: Check script balance
+        shell: bash
+        run: |
+          awk '
+            BEGIN { braces = 0; parens = 0 }
+            {
+              for (i = 1; i <= length($0); i++) {
+                c = substr($0, i, 1)
+                if (c == "{") braces++
+                if (c == "}") braces--
+                if (c == "(") parens++
+                if (c == ")") parens--
+              }
+            }
+            END {
+              print "brace_balance=" braces
+              print "paren_balance=" parens
+              if (braces != 0 || parens != 0) exit 1
+            }
+          ' Assets/Scripts/GameBootstrapper.cs
+
+  unity-webgl-build:
+    name: Unity WebGL build
+    runs-on: ubuntu-latest
+    needs: repository-smoke
+    if: ${{ vars.UNITY_CI_ENABLED == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Cache Unity Library
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-WebGL-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-WebGL-
+            Library-
+
+      - name: Build WebGL
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+          unityVersion: auto
+
+      - name: Upload WebGL build
+        uses: actions/upload-artifact@v4
+        with:
+          name: red-alert-rts-webgl
+          path: build/WebGL

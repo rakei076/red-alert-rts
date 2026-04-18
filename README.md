@@ -112,6 +112,12 @@ After pressing Play:
 
 See `docs/ROADMAP.md`.
 
+## Cloud Testing
+
+Cloud testing is prepared through GitHub Actions and GameCI. The repository smoke check can run without Unity credentials. The real Unity WebGL build requires Unity Actions secrets.
+
+See `docs/ci/UNITY_CLOUD_TESTING.md`.
+
 ## License
 
 Code is MIT licensed. Current procedural placeholder visuals are CC0. See `ASSET_LICENSE.md`.
